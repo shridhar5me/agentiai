@@ -23,7 +23,6 @@ st.title("Smart Resume Screener - MultiAgent")
 with st.sidebar:
     st.header("Controls")
     auto_check = st.checkbox("Auto-check inbox on load", value=True)
-    run_proactive = st.button("Run proactive scan now")
 col1, col2 = st.columns([3,1])
 with col1:
     jd_file = st.file_uploader("Upload Job Description (PDF/TXT)", type=["pdf","txt"], key="jd")
@@ -89,15 +88,7 @@ def run_evaluation(jd_text, resumes_data):
         progress.progress(int(idx/total*100))
     return sorted(results, key=lambda x: int(x.get("match_score",0)), reverse=True)
 
-if auto_check or run_proactive:
-    inbox_files = list(inbox_dir.glob("*"))
-    if inbox_files:
-        st.info(f"Found {len(inbox_files)} files in inbox. They will be included in evaluation.")
-        for p in inbox_files:
-            with open(p, "r", encoding="utf-8", errors="ignore") as f:
-                pass
-
-if evaluate or run_proactive:
+if evaluate:
     jd_text = read_uploaded(jd_file) if jd_file else ""
     resumes_data = []
     if resumes:
