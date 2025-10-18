@@ -7,7 +7,6 @@ from typing import List, Tuple, Dict, Any
 from openai import OpenAI
 from PyPDF2 import PdfReader
 from agents import extract_text_from_file, parse_resume_fields, call_openai_scorer, call_openai_explainer
-from db import init_db, save_evaluation, fetch_history
 
 st.set_page_config(page_title="Smart Resume Screener - MultiAgent", layout="wide")
 
