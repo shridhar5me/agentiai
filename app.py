@@ -20,9 +20,6 @@ OPENAI_MODEL = st.secrets.get("OPENAI_MODEL", "gpt-4")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 st.title("Smart Resume Screener - MultiAgent")
-with st.sidebar:
-    st.header("Controls")
-    auto_check = st.checkbox("Auto-check inbox on load", value=True)
 col1, col2 = st.columns([3,1])
 with col1:
     jd_file = st.file_uploader("Upload Job Description (PDF/TXT)", type=["pdf","txt"], key="jd")
