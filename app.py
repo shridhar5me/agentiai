@@ -82,10 +82,6 @@ def run_evaluation(jd_text, resumes_data):
             "highlights": explanation.get("highlights", [])
         }
         results.append(out)
-        if enable_history:
-            save_evaluation(str(Path(__file__).parent / "screenings.db"), out)
-        progress.progress(int(idx/total*100))
-    return sorted(results, key=lambda x: int(x.get("match_score",0)), reverse=True)
 
 
 if evaluate :
