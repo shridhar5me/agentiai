@@ -90,7 +90,7 @@ if evaluate:
     if resumes:
         for r in resumes:
             resumes_data.append((r.name, read_uploaded(r)))
-    if use_samples and sample_files:
+    if sample_files:
         for p in sample_files:
             with open(p, "r", encoding="utf-8") as f:
                 resumes_data.append((p.name, f.read()))
