@@ -24,7 +24,6 @@ col1, col2 = st.columns([3,1])
 with col1:
     jd_file = st.file_uploader("Upload Job Description (PDF/TXT)", type=["pdf","txt"], key="jd")
     resumes = st.file_uploader("Upload Resumes (PDF/TXT)", type=["pdf","txt"], accept_multiple_files=True, key="resumes")
-    use_samples = st.checkbox("Use sample resumes included", value=True)
     evaluate = st.button("Evaluate Resumes")
 with col2:
     st.write("Options")
