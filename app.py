@@ -30,13 +30,8 @@ with col2:
     max_tokens = st.slider("Max tokens", 200, 2000, 800, 100)
     st.write("Model: " + OPENAI_MODEL)
 
-sample_dir = Path(__file__).parent / "sample_resumes"
 inbox_dir = Path(__file__).parent / "inbox_resumes"
 inbox_dir.mkdir(exist_ok=True)
-sample_files = []
-if sample_dir.exists():
-    for p in sample_dir.glob("*.txt"):
-        sample_files.append(p)
 
 def read_uploaded(f):
     if f is None:
@@ -90,10 +85,7 @@ if evaluate:
     if resumes:
         for r in resumes:
             resumes_data.append((r.name, read_uploaded(r)))
-    if sample_files:
-        for p in sample_files:
-            with open(p, "r", encoding="utf-8") as f:
-                resumes_data.append((p.name, f.read()))
+
     for p in inbox_dir.glob("*.txt"):
         with open(p, "r", encoding="utf-8", errors="ignore") as f:
             resumes_data.append((p.name, f.read()))
