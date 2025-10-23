@@ -104,7 +104,7 @@ if evaluate:
                 st.write("Highlights:")
                 for h in r.get("highlights", []):
                     st.markdown(f"- {h}")
-            st.write("---")
+
         csv_buffer = io.StringIO()
         writer = csv.writer(csv_buffer)
         writer.writerow(["candidate_name","source_file","match_score","fit_level","years_experience_estimate","key_skills_matched","missing_skills","short_summary"])
