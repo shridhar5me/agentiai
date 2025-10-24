@@ -5,7 +5,6 @@ from PyPDF2 import PdfReader
 from openai import OpenAI
 
 def extract_text_from_file(uploaded_file):
-    try:
         if hasattr(uploaded_file, "read"):
             reader = PdfReader(uploaded_file)
         else:
@@ -14,12 +13,7 @@ def extract_text_from_file(uploaded_file):
         for page in reader.pages:
             text_pages.append(page.extract_text() or "")
         return "\n".join(text_pages)
-    except Exception:
-        try:
-            raw = uploaded_file.getvalue()
-            return raw.decode("utf-8", errors="ignore")
-        except Exception:
-            return ""
+    
 
 def parse_resume_fields(text):
     out = {}
